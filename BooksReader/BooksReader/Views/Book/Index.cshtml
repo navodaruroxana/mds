@@ -5,45 +5,60 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <div class="card">
-	<img class="card-img-top" src="@String.Format("/Content/images/{0}.jpg", @Model.Id - 1)" alt="@Model.Title" runat="server" />
-	<div class="card-body">
-		<h4 class="card-title">@Model.Title</h4>
-		<p class="card-text">@Model.Description</p>
-		@using (Html.BeginForm("GiveRating", "Book", new { bookId = Model.Id }))
-		{
-			<p class="card-text">Rating: @Model.Rating</p>
-			<p class="card-text">
-				@if (ViewBag.Rating != null)
-				{
-					<label>MyRating:</label> @ViewBag.Rating;
-				}
-
-				@if (User.Identity.IsAuthenticated)
-				{
-					@Html.DropDownList("givenRating", new SelectList(new List<int> { 1, 2, 3, 4, 5 }), new { @class = "form-control form-control-lg" })
-					if (ViewBag.Rating != null)
-					{
-						<input type="submit" class="btn btn-primary" value="Change Rating" />
-					}
-					else
-					{
-						<input type="submit" class="btn btn-primary" value="Give Rating" />
-					}
-				}
-			</p>
-		}
-
-		@if (User.Identity.IsAuthenticated && ViewBag.BookStatuses != null)
-		{
-			using (Html.BeginForm("ChangeStatus", "Book", new { bookId = Model.Id }))
+	<div class="col-12">
+	<div class="col-4" style="float: left; padding: 0 10px; margin-bottom:10px">
+		<img class="card-img-top" style="width: 100%; height: 100%" src="@String.Format("/Content/images/{0}.jpg", @Model.Id - 1)" alt="@Model.Title" runat="server" />
+	</div>
+	<div class="col-7" style="float: left; padding: 0 10px; margin-bottom:10px">
+		<div class="card-body">
+			<h4 class="card-title">@Model.Title</h4>
+			<p class="card-text" style="color: blue"> <label>Author:</label>  @Model.Author</p>
+			<p class="card-text"> <label> No. of pages: </label> @Model.Pages</p>
+			<p class="card-text">@Model.Description</p>
+			@using (Html.BeginForm("GiveRating", "Book", new { bookId = Model.Id }))
 			{
+				<p class="card-text">Rating: @Model.Rating <i style="font-size:24px; color: gold" class="fa">&#xf006;</i> </p>
 				<p class="card-text">
-					@Html.DropDownList("status", new SelectList(ViewBag.BookStatuses, "Value", "Key", ViewBag.SelectedStatusId == null ? 1 : ViewBag.SelectedStatusId), new { @class = "form-control form-control-lg" })
-					<input type="submit" class="btn btn-primary" value="Change Status" />
+					@if (ViewBag.Rating != null)
+					{
+						<label>MyRating:</label> @ViewBag.Rating   <i style="font-size:24px; color: gold" class="fa">&#xf006;</i>;
+					}
+
+					@if (User.Identity.IsAuthenticated)
+					{
+						<div class="col-4" style="float: left; padding: 0 10px">
+						@Html.DropDownList("givenRating", new SelectList(new List<int> { 1, 2, 3, 4, 5 }), new { @class = "form-control form-control-lg" })
+							</div>
+						if (ViewBag.Rating != null)
+						{
+							<input type="submit" class="btn btn-primary" style="margin-top:5px; margin-left: 10px" value="Change Rating" />
+						}
+						}
+						else
+						{
+							<input type="submit" class="btn btn-primary" style="margin-top:5px; margin-left: 10px" value="Give Rating" />
+						}
+					}
 				</p>
 			}
-		}
+
+			@if (User.Identity.IsAuthenticated && ViewBag.BookStatuses != null)
+			{
+				using (Html.BeginForm("ChangeStatus", "Book", new { bookId = Model.Id }))
+				{
+				<p class="card-text">
+					<div class="col-4" style="float: left; padding: 0 10px">
+						@Html.DropDownList("status", new SelectList(ViewBag.BookStatuses, "Value", "Key", ViewBag.SelectedStatusId == null ? 1 : ViewBag.SelectedStatusId), new { @class = "form-control form-control-lg" })
+						</div>
+						<input type="submit" class="btn btn-primary" style="margin-top:5px; margin-left: 10px" value="Change Status" />
+				</p>
+				}
+			}
+		</div>
+		</div>
+		</div>
 	</div>
-</div>
 
