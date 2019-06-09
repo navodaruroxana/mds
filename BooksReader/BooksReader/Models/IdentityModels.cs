@@ -16,7 +16,11 @@ namespace BooksReader.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
+
+		public virtual DbSet<Group> Groups { get; set; }
+
+		public virtual DbSet<Comment> Comments { get; set; }
+	}
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -29,5 +33,18 @@ namespace BooksReader.Models
         {
             return new ApplicationDbContext();
         }
-    }
+
+		public DbSet<Book> Books { get; set; }
+
+		public DbSet<Group> Groups { get; set; }
+
+		public DbSet<Comment> Comments { get; set; }
+
+		public DbSet<UserProfile> UserProfiles { get; set; }
+
+		public DbSet<BookStatus> BookStatuses { get; set; }
+
+		public DbSet<UserBookStatus> UserBookStatuses { get; set; }
+
+	}
 }

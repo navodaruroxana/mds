@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BooksReader.Models.Book>
+
+
+@if (Model.Count() > 0)
+{
+	foreach (var item in Model)
+	{
+		<div class="card">
+			<img class="card-img-top" src="@String.Format("/Content/images/{0}.jpg", item.Id - 1)" alt="@item.Title" runat="server"/>
+			<div class="card-body">
+				<h4 class="card-title">@item.Title</h4>
+				<p class="card-text">@item.Description</p>
+				<a href="#" class="btn btn-primary">See more...</a>
+			</div>
+		</div>
+	}
+}
+else
+{
+	@Html.Label("No data available", new { @class = "notAvailableData" })
+}
