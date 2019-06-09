@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+
+</head>
+<body>
+	<nav id="sidebar">
+		<div class="sidebar-header">
+			<h3>Books</h3>
+		</div>
+
+		<ul class="list-unstyled components">
+			<li>@Html.ActionLink("Home", "Index", "Home")</li>
+			@using Microsoft.AspNet.Identity
+			@if (Request.IsAuthenticated)
+			{
+				<li>@Html.ActionLink("About", "About", "Home")</li>
+				<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+			}
+			@Html.Partial("_LoginPartial")
+		</ul>
+	</nav>
+
+	<div id="content">
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+
+				<button type="button" id="sidebarCollapse" class="btn btn-info">
+					<i class="fas fa-align-left"></i>
+					<span>Toggle Sidebar</span>
+				</button>
+			</div>
+		</nav>
+
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar, #content').toggleClass('active');
+				$('.collapse.in').toggleClass('in');
+				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+			});
+
+		});
+	</script>
+
+</body>
+</html>
