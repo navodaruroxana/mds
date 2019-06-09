@@ -13,11 +13,16 @@ namespace BooksReader.Controllers
 	{
 		private ApplicationDbContext DBCtx = new ApplicationDbContext();
 
-		public ActionResult Index()
+		public ActionResult Index(string searchInput)
 		{
+			List<Book> books = new List<Book>();
 
-			List<Book> books = DBCtx.Books.ToList().Take(10).ToList();
-
+			if (string.IsNullOrEmpty(searchInput))
+				books = DBCtx.Books.Take(10).ToList();
+			else
+			{
+				books = DBCtx.Books.Where(item => item.Title.Contains(searchInput) || item.Author.Contains(searchInput)).Take(10).ToList();
+			}
 
 
 			//HttpClient client = new HttpClient();

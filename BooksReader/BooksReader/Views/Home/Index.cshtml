@@ -4,19 +4,21 @@
 	ViewBag.Title = "Home Page";
 }
 
-<div class="col-10 col-md-6 col-lg-4">
-	<form>
+<div class="col-12 col-md-6 col-lg-6">
+	<form method="post">
 		<div class="card-body row no-gutters align-items-center">
 			<div class="col-auto">
 				<i class="fas fa-search h4 text-body"></i>
 			</div>
-			<div class="col-auto">
-				<input class="form-control form-control-lg" t type="search" placeholder="Search books or author">
+			<div class="col-auto" style="margin-right: 12px">
+				@Html.TextBox("searchInput", null, new { @class = "form-control form-control-lg", @placeholder = "Search books or author" })
 			</div>
 			<div class="col-auto">
 				<button class="btn btn-lg btn-success" type="submit">Search</button>
 			</div>
 		</div>
 	</form>
-	@Html.Partial("_BooksPartial", Model, new ViewDataDictionary())
+
 </div>
+
+@Html.Partial("_BooksPartial", Model, new ViewDataDictionary())
