@@ -201,6 +201,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +216,10 @@
     <Compile Include="Migrations\201906092053195_Review.cs" />
     <Compile Include="Migrations\201906092053195_Review.Designer.cs">
       <DependentUpon>201906092053195_Review.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906092248205_Profile.cs" />
+    <Compile Include="Migrations\201906092248205_Profile.Designer.cs">
+      <DependentUpon>201906092248205_Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -320,6 +325,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_BooksPartial.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906092053195_Review.resx">
       <DependentUpon>201906092053195_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906092248205_Profile.resx">
+      <DependentUpon>201906092248205_Profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

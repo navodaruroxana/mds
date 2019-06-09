@@ -1,0 +1,22 @@
+@model KeyValuePair<BooksReader.Models.UserProfile, List<IEnumerable<BooksReader.Models.Book>>>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12" style="float: left; padding: 0 10px; margin-bottom:10px">
+	<h2>Want to read</h2>
+	@Html.Partial("_BooksPartial", Model.Value.ElementAt(0))
+</div>
+
+
+
+<div class="col-12" style="float: left; padding: 0 10px; margin-bottom:10px">
+	<h2>Currently reading</h2>
+	@Html.Partial("_BooksPartial", Model.Value.ElementAt(1))
+</div>
+
+<div class="col-12" style="float: left; padding: 0 10px; margin-bottom:10px">
+	<h2>Read</h2>
+	@Html.Partial("_BooksPartial", Model.Value.ElementAt(2))
+</div>
