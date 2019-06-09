@@ -46,5 +46,9 @@ namespace BooksReader.Models
 
 		public DbSet<UserBookStatus> UserBookStatuses { get; set; }
 
+		public DbSet<UserBookRating> UserBookRatings { get; set; }
+
+		public DbSet<UserBookReview> UserBookReviews { get; set; }
+
 	}
 }

@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,6 +211,10 @@
     <Compile Include="Migrations\201906091705271_Initial.cs" />
     <Compile Include="Migrations\201906091705271_Initial.Designer.cs">
       <DependentUpon>201906091705271_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906092053195_Review.cs" />
+    <Compile Include="Migrations\201906092053195_Review.Designer.cs">
+      <DependentUpon>201906092053195_Review.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,6 +319,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Shared\_BooksPartial.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906091705271_Initial.resx">
       <DependentUpon>201906091705271_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906092053195_Review.resx">
+      <DependentUpon>201906092053195_Review.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

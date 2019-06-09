@@ -1,0 +1,49 @@
+@model BooksReader.Models.Book
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+	<img class="card-img-top" src="@String.Format("/Content/images/{0}.jpg", @Model.Id - 1)" alt="@Model.Title" runat="server" />
+	<div class="card-body">
+		<h4 class="card-title">@Model.Title</h4>
+		<p class="card-text">@Model.Description</p>
+		@using (Html.BeginForm("GiveRating", "Book", new { bookId = Model.Id }))
+		{
+			<p class="card-text">Rating: @Model.Rating</p>
+			<p class="card-text">
+				@if (ViewBag.Rating != null)
+				{
+					<label>MyRating:</label> @ViewBag.Rating;
+				}
+
+				@if (User.Identity.IsAuthenticated)
+				{
+					@Html.DropDownList("givenRating", new SelectList(new List<int> { 1, 2, 3, 4, 5 }), new { @class = "form-control form-control-lg" })
+					if (ViewBag.Rating != null)
+					{
+						<input type="submit" class="btn btn-primary" value="Change Rating" />
+					}
+					else
+					{
+						<input type="submit" class="btn btn-primary" value="Give Rating" />
+					}
+				}
+			</p>
+		}
+
+		@if (User.Identity.IsAuthenticated && ViewBag.BookStatuses != null)
+		{
+			using (Html.BeginForm("ChangeStatus", "Book", new { bookId = Model.Id }))
+			{
+				<p class="card-text">
+					@Html.DropDownList("status", new SelectList(ViewBag.BookStatuses, "Value", "Key", ViewBag.SelectedStatusId == null ? 1 : ViewBag.SelectedStatusId), new { @class = "form-control form-control-lg" })
+					<input type="submit" class="btn btn-primary" value="Change Status" />
+				</p>
+			}
+		}
+	</div>
+</div>
+

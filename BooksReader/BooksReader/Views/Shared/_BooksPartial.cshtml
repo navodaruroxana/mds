@@ -5,15 +5,17 @@
 {
 	foreach (var item in Model)
 	{
-		<div class="col-4" style="float: left; padding: 0 10px">
+		<div class="col-4" style="float: left; padding: 0 10px; margin-bottom:10px">
 		<div class="card">
-			<img class="card-img-top" style="width:50%; height:50%; margin-left:25%" src="@String.Format("/Content/images/{0}.jpg", item.Id - 1)" alt="@item.Title" runat="server"/>
+			<img class="card-img-top" style="height: 300px; max-width: 50%; margin-left:25%; margin-top: 5px" src="@String.Format("/Content/images/{0}.jpg", item.Id - 1)" alt="@item.Title" runat="server"/>
 			<div class="card-body">
-				<h4 class="card-title">@item.Title</h4>
-				<p class="card-text">@item.Description</p>
-				<a href="#" class="btn btn-primary">See more...</a>
+				<h4 class="card-title" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden">@item.Title</h4>
+				<p class="card-text" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden">@item.Description</p>
+				
+				@Html.ActionLink("See more..", "Index", "Book", new { bookId = item.Id }, new { @class = "btn btn-primary", @style = "margin-left:35%" })
 			</div>
 		</div>
+			
 			</div>
 	}
 }

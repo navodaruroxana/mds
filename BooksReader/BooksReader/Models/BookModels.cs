@@ -46,4 +46,26 @@ namespace BooksReader.Models
 
 		public BookStatus BookStatus { get; set; }
 	}
+
+	public class UserBookRating
+	{
+		public int Id { get; set; }
+
+		public ApplicationUser User { get; set; }
+
+		public Book Book { get; set; }
+
+		public int Rating { get; set; }
+	}
+
+	public class UserBookReview
+	{
+		public int Id { get; set; }
+
+		public ApplicationUser User { get; set; }
+
+		public Book Book { get; set; }
+
+		public string Review { get; set; }
+	}
 }
