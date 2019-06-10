@@ -1,0 +1,31 @@
+@model KeyValuePair<int, List<BooksReader.Models.Comment>>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-10 col-md-6 col-lg-4">
+	@using (Html.BeginForm("SaveMessage", "Comment", new { groupId = Model.Key }))
+	{
+		@Html.TextArea("comment", null, new { @class = "form-control" })
+		<input type="submit" class="btn btn-primary" value="Post Comment" />
+	}
+
+	@if (Model.Value != null && Model.Value.Count > 0)
+	{
+		foreach (var item in Model.Value)
+		{
+			<div class="card">
+				<div class="card-body">
+					<p class="card-text">@item.Message</p>
+					<p class="card-deck">@item.User.UserName - @item.DateAdded</p>
+				</div>
+			</div>
+		}
+	}
+	else
+	{
+		@Html.Label("No data available", new { @class = "notAvailableData" })
+	}
+</div>

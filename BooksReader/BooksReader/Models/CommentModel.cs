@@ -13,7 +13,7 @@ namespace BooksReader.Models
 
 		public Group Group { get; set; }
 
-		public DateTime DateAdded { get; set; }
+		public DateTime? DateAdded { get; set; }
 
 		public string Message { get; set; }
 	}

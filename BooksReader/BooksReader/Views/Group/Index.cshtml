@@ -28,7 +28,7 @@
 					<td>@item.Item1.Rules</td>
 					@if (item.Item2)
 					{
-						<td>@Html.ActionLink("Conversation", "Index", "Comment", new { groupId = item.Item1.Id })</td>
+						<td>@Html.ActionLink("Conversation", "Index", "Comment", new { groupId = item.Item1.Id }, null)</td>
 					}
 					else
 					{

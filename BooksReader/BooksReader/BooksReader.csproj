@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -225,6 +226,10 @@
     <Compile Include="Migrations\201906100050254_Group.cs" />
     <Compile Include="Migrations\201906100050254_Group.Designer.cs">
       <DependentUpon>201906100050254_Group.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906100147300_Comments.cs" />
+    <Compile Include="Migrations\201906100147300_Comments.Designer.cs">
+      <DependentUpon>201906100147300_Comments.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,6 +338,7 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906100050254_Group.resx">
       <DependentUpon>201906100050254_Group.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906100147300_Comments.resx">
+      <DependentUpon>201906100147300_Comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
