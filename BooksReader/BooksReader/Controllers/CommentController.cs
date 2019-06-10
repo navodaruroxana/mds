@@ -48,9 +48,6 @@ namespace Books.Controllers
 					bool joinedGroup = DBCtx.UserGroup.FirstOrDefault(item => item.User.Id == userId && item.Group.Id == groupId) != null;
 					if (joinedGroup)
 					{
-						List<Comment> comms = DBCtx.Comments.Include("User").Where(item => item.User.Id == userId && item.Group.Id == groupId).OrderByDescending(item1 => item1.DateAdded).ToList();
-						comments = new KeyValuePair<int, List<Comment>>(groupId.Value, comms);
-
 						if (!string.IsNullOrEmpty(comment))
 						{
 							Comment comm = new Comment();
@@ -64,6 +61,9 @@ namespace Books.Controllers
 							DBCtx.Comments.Add(comm);
 							DBCtx.SaveChanges();
 						}
+
+						List<Comment> comms = DBCtx.Comments.Include("User").Where(item => item.User.Id == userId && item.Group.Id == groupId).OrderByDescending(item1 => item1.DateAdded).ToList();
+						comments = new KeyValuePair<int, List<Comment>>(groupId.Value, comms);
 
 						return View("Index", comments);
 					}	
