@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -17,9 +18,9 @@ namespace BooksReader.Models
             return userIdentity;
         }
 
-		public virtual DbSet<Group> Groups { get; set; }
+		public virtual ICollection<Group> Groups { get; set; }
 
-		public virtual DbSet<Comment> Comments { get; set; }
+		public virtual ICollection<Comment> Comments { get; set; }
 	}
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -49,6 +50,7 @@ namespace BooksReader.Models
 		public DbSet<UserBookRating> UserBookRatings { get; set; }
 
 		public DbSet<UserBookReview> UserBookReviews { get; set; }
-
+		
+		public DbSet<UserGroup> UserGroup { get; set; }
 	}
 }

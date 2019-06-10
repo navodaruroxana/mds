@@ -20,9 +20,18 @@ namespace BooksReader.Models
 
 		public string Rules { get; set; }
 
-		public virtual DbSet<ApplicationUser> Users { get; set; }
+		public virtual ICollection<ApplicationUser> Users { get; set; }
 
-		public virtual DbSet<ApplicationUser> Comments { get; set; }
+		public virtual ICollection<ApplicationUser> Comments { get; set; }
 	}
-	
+
+	public class UserGroup
+	{
+		public int Id { get; set; }
+
+		public ApplicationUser User { get; set; }
+
+		public Group Group { get; set; }
+	}
+
 }

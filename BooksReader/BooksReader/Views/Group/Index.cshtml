@@ -1,0 +1,45 @@
+@model List<Tuple<BooksReader.Models.Group, bool>>
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Create", "Create", "Group", null, new { @class = "btn btn-primary" })
+
+@if (Model != null && Model.Count() > 0)
+{
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Moderator</th>
+				<th>Rules</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Tuple<BooksReader.Models.Group, bool> item in Model)
+			{
+				<tr>
+					<td>@item.Item1.Name</td>
+					<td>@item.Item1.Description</td>
+					<td>@item.Item1.Moderator.UserName</td>
+					<td>@item.Item1.Rules</td>
+					@if (item.Item2)
+					{
+						<td>@Html.ActionLink("Conversation", "Index", "Comment", new { groupId = item.Item1.Id })</td>
+					}
+					else
+					{
+						<td>@Html.ActionLink("Join", "Join", "Group", new { groupId = item.Item1.Id }, null)</td>
+					}
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>@Html.Label("No data available", new { @class = "notAvailableData" })</p>
+}
