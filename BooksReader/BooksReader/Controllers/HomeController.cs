@@ -17,26 +17,12 @@ namespace BooksReader.Controllers
 		{
 			List<Book> books = new List<Book>();
 
-			if (string.IsNullOrEmpty(searchInput))
+			if (string.IsNullOrWhiteSpace(searchInput))
 				books = DBCtx.Books.Take(15).ToList();
 			else
 			{
 				books = DBCtx.Books.Where(item => item.Title.Contains(searchInput) || item.Author.Contains(searchInput)).Take(15).ToList();
 			}
-
-
-			//HttpClient client = new HttpClient();
-
-			//UriBuilder uri = new UriBuilder("https://www.goodreads.com/search/index.xml");
-			//NameValueCollection parameters = HttpUtility.ParseQueryString(string.Empty);
-			//parameters["key"] = "a7Xzks3Cp5M9LxHNgJQ8RA";
-			//parameters["q"] = "Ender";
-			//parameters["page"] = "2";
-			//uri.Query = parameters.ToString();
-
-
-			//var resp = await client.GetAsync(uri.Uri);
-			//string result = await resp.Content.ReadAsStringAsync();
 
 			return View(books);
 		}
